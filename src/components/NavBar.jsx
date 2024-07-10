@@ -10,13 +10,13 @@ export default function NavBar() {
             </div>
             <div className="flex m-8 items-center gap-4 justify-center text-2xl">
                 <a href="https://www.linkedin.com/in/arjun-k-sukesh/">
-                    <FaLinkedin />
+                    <FaLinkedin className="hover:text-blue-500"/>
                 </a>
                 <a href="https://github.com/ArjunKSukesh">
-                    <FaGithub />
+                    <FaGithub className="hover:text-white"/>
                 </a>
                 <a href="https://www.instagram.com/this.is_.arjun?igsh=MW13MjIxeTE5ZHR6cw==">
-                    <FaInstagramSquare />
+                    <FaInstagramSquare className="hover:text-red-700 "/>
                 </a>
             </div>
         </nav>
