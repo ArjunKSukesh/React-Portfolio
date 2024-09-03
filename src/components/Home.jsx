@@ -1,6 +1,6 @@
 import { desc } from "../index.js";
 import profilePic from '../assets/arjun.jpg';
-import {  motion } from "framer-motion"
+import {  motion } from "framer-motion";
 
 const container = (delay) => ({
     hidden: {x:-100, opacity: 0},
@@ -35,7 +35,9 @@ export default function Home() {
                           variants={container(1)}
                           initial="hidden"
                           animate="visible"
-                        className="my-2 max-w-xl py-6 font-light tracking-tighter">{desc}</motion.p>
+                        className="my-2 max-w-xl py-6 font-light tracking-tighter">
+                           {desc}
+                            </motion.p>
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 lg:p-8">

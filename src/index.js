@@ -1,11 +1,11 @@
 import NearNestPic from './assets/hostel.jpg';
 import SkillLancePic from './assets/freelancing.jpg';
-import WellTourPic from './assets/hospital.jpg';
+import AiChatbot from './assets/ai_chatbot.jpg'
 
 
 export const desc = `I craft user-friendly web applications that are
- both beautiful and functional. My expertise lies in HTML, CSS, JavaScript, 
- React and Python. I'm a passionate developer who thrives on challenges and embraces new technologies. 
+ both beautiful and functional. My expertise lies in  ReactJs, ExpressJs, MongoDB
+ and NodeJs. I'm a passionate developer who thrives on challenges and embraces new technologies. 
  Let's collaborate on your next project!
 `
 
@@ -35,11 +35,11 @@ export const PROJECTS = [
 
     },
     {
-        title : "WELLTOUR",
-        image : WellTourPic,
-        description : "A web application aims to promote the best possible physical,mental, and emotional well-being, which is essential for living a satisfying life in today’s fast-paced and demanding environment.",
-        technologies : ["Handlebars, Html, Css, NodeJs, Express, MongoDB"],
-        gitHub : "https://github.com/ArjunKSukesh/WELLTOUR"
+        title : "ASKme",
+        image : AiChatbot,
+        description : "Developed an AI chatbot using the MERN stack, leveraging the Gemini API for advanced natural language understanding and generation. Capable of answering user questions and providing informative responses on a wide range of topics.",
+        technologies : ["React Js, Express Js, Node Js, MongoDB, Clerk Js "],
+        gitHub : "https://github.com/ArjunKSukesh/ASKme"
 
     }
 ]

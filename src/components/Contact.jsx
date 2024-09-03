@@ -1,24 +1,25 @@
 import { useState } from "react";
 import emailjs from '@emailjs/browser';
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 
 export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [buttonText, setButtonText] = useState("Send Mail")
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const serviceId = "service_qjwmggp";
-    const templateId = "template_b3a44gm";
-    const publicKey = "AGoHkjUNttBIRfqKD";
+    setButtonText("Sending....")
+    const serviceId = import.meta.env.VITE_SERVICE_ID;
+    const templateId = import.meta.env.VITE_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
-    console.log(name);
-    console.log(email);
-    console.log(message);
+
 
     const templateParams = {
       from_name: name,
@@ -27,20 +28,24 @@ export default function Contact() {
       message: message
     };
 
-    emailjs.send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        setName('');
-        setEmail('');
-        setMessage('');
-      },
-        (error) => {
-          console.log('FAILED...', error);
-        },
-      );
-  }
+  
 
-  const buttonDisable = name.trim() === "" || email.trim() === "" || message.trim() === ""
+
+
+    try {
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      setName('');
+      setEmail('');
+      setMessage('');
+      setButtonText('Send Email'); // Reset button text
+      toast.success("Email Sent Successfully");
+    } catch (error) {
+      console.log('FAILED...', error);
+      setButtonText('Send Email'); // Reset button text in case of error
+    }
+  };
+
+  const buttonDisable = name.trim() === "" || email.trim() === "" || message.trim() === "";
   return <motion.div
     whileInView={{ opacity: 1, y: 0 }}
     initial={{ opacity: 0, y: -100 }}
@@ -75,7 +80,9 @@ export default function Contact() {
         <button
           type="submit"
           disabled={buttonDisable}
-          className={` text-white font-semibold text-lg uppercase w-full hover:cursor-pointer p-3 rounded-lg bg-green-600 ${buttonDisable ? " hover:opacity-80 hover:bg-gray-500" : " hover:opacity-90"} `}>Send Email</button>
+          className={` text-white font-semibold text-lg uppercase w-full hover:cursor-pointer p-3 rounded-lg bg-green-600 ${buttonDisable ? " hover:opacity-80 hover:bg-gray-500" : " hover:opacity-90"} `}>
+          {buttonText}
+        </button>
       </form>
     </div>
 
